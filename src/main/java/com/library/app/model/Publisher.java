@@ -1,6 +1,7 @@
 package com.library.app.model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,6 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 
 @Entity
@@ -38,7 +42,31 @@ public class Publisher {
 	@Column(name="deleted")
 	private Boolean deleted = false;
 	
+	@CreationTimestamp
+	@Column(name="created_date")
+	private Calendar createdDate;
 	
+	
+	@UpdateTimestamp
+	@Column(name="updated_date")
+	private Calendar updatedDate;
+	
+
+	public Calendar getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Calendar createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Calendar getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Calendar updatedDate) {
+		this.updatedDate = updatedDate;
+	}
 
 	public Boolean getDeleted() {
 		return deleted;

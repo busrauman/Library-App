@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.library.app.model.Publisher;
 import com.library.app.service.PublisherService;
@@ -21,7 +22,7 @@ public class PublisherController {
 	private PublisherService publisherService;
 	
 	@ModelAttribute("publisher")
-	public Publisher prepare(@RequestParam(value="id",required=true) Long id) {
+	public Publisher prepare(@RequestParam(value="id",required=false) Long id) {
 		Publisher publisher = null;
 		if(null != id) {
 			publisher = publisherService.getPublisher(id);
@@ -34,16 +35,16 @@ public class PublisherController {
 	}
 	@RequestMapping(value="/create/publisher",method=RequestMethod.GET)
 	public String createPublisher() {
-		return "publisher";
+		return "createPublisher";
 	}
 	
 
 	@RequestMapping(value="/create/publisher",method=RequestMethod.POST)
 	public String createPublisher(@ModelAttribute("publisher") Publisher publisher,BindingResult result) {
 		if(!result.hasErrors()) {
-			
+			publisherService.saveOrUpdate(publisher);
 		}
-		return "publisher";
+		return "redirect:/publishers";
 	}
 
 	
@@ -59,5 +60,15 @@ public class PublisherController {
 		Publisher publisher = publisherService.getPublisher(id);
 		model.addAttribute("publisher",publisher);
 		return "publisher";
+	}
+	@RequestMapping(value="/publisher/{id}",method=RequestMethod.DELETE)
+	@ResponseBody
+	public Boolean deletePublisher(@PathVariable("id") Long id) {
+		Publisher publisher = publisherService.getPublisher(id);
+		if(null != publisher) {
+			publisherService.delete(publisher);
+			return true;
+		}
+		return false;
 	}
 }

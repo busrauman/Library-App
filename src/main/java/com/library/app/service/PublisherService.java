@@ -21,7 +21,15 @@ public class PublisherService {
 
 	public List<Publisher> findAll() {
 		// TODO Auto-generated method stub
-		return publisherRepository.findAll();
+		return publisherRepository.findByDeletedFalse();
+	}
+
+	public void saveOrUpdate(Publisher publisher) {
+		publisherRepository.saveAndFlush(publisher);
+	}
+	
+	public void delete(Publisher publisher) {
+		publisherRepository.deletePublisher(publisher.getId());
 	}
 
 }

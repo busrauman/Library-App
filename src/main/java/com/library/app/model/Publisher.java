@@ -14,6 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 
@@ -35,6 +36,7 @@ public class Publisher {
 	@Column(name="name")
 	private String name;
 	
+	@Type(type="text")
 	@Column(name="description")
 	private String description;
 	

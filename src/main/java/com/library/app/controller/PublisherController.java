@@ -33,13 +33,13 @@ public class PublisherController {
 		return publisher;
 		
 	}
-	@RequestMapping(value="/create/publisher",method=RequestMethod.GET)
+	@RequestMapping(value="/publisher",method=RequestMethod.GET)
 	public String createPublisher() {
 		return "createPublisher";
 	}
 	
 
-	@RequestMapping(value="/create/publisher",method=RequestMethod.POST)
+	@RequestMapping(value="/publisher",method=RequestMethod.POST)
 	public String createPublisher(@ModelAttribute("publisher") Publisher publisher,BindingResult result) {
 		if(!result.hasErrors()) {
 			publisherService.saveOrUpdate(publisher);

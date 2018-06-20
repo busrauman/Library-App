@@ -16,7 +16,7 @@ public class PublisherService {
 	
 	public Publisher getPublisher(Long id) {
 		// TODO Auto-generated method stub
-		return publisherRepository.getOne(id);
+		return publisherRepository.findByIdAndDeletedIsFalse(id);
 	}
 
 	public List<Publisher> findAll() {

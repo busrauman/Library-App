@@ -46,7 +46,7 @@
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="publisher"><fmt:message key="menu.yayinevi.ekle"/></a></li>
-                        <li><a href="#"><fmt:message key="menu.yayinevi.listesi"/></a></li>                
+                        <li><a href="publishers"><fmt:message key="menu.yayinevi.listesi"/></a></li>                
                     </ul>
                 </li>
             </ul>

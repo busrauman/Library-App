@@ -10,10 +10,12 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.library.app.model.Publisher;
+import java.lang.Long;
 
 @Repository
 public interface PublisherRepository extends JpaRepository<Publisher, Long>{
 	List<Publisher> findByDeletedFalse();
+	Publisher findByIdAndDeletedIsFalse(Long id);
 	
 	@Transactional
 	@Modifying

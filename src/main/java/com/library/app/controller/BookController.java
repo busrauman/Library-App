@@ -15,13 +15,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.library.app.model.Author;
 import com.library.app.model.Book;
+import com.library.app.model.Publisher;
+import com.library.app.service.AuthorService;
 import com.library.app.service.BookService;
+import com.library.app.service.PublisherService;
 
 @Controller
 public class BookController {
 
 	@Autowired
 	private BookService bookService;
+	
+	@Autowired
+	private AuthorService authorService;
+	
+	@Autowired 
+	private PublisherService publisherService;
 
 	@ModelAttribute("book")
 	public Book prepare(@RequestParam(value = "id", required = false) Long id) {
@@ -35,12 +44,16 @@ public class BookController {
 		return book;
 	}
 
-	@RequestMapping(value = "/create/book", method = RequestMethod.GET)
-	public String createBook() {
+	@RequestMapping(value = "/book", method = RequestMethod.GET)
+	public String createBook(Model model) {
+		List<Author> authors = authorService.authors();
+		model.addAttribute("authors",authors);
+		List<Publisher> publishers = publisherService.findAll();
+		model.addAttribute("publishers",publishers);
 		return "createBook";
 	}
 
-	@RequestMapping(value = "/create/book", method = RequestMethod.POST)
+	@RequestMapping(value = "/book", method = RequestMethod.POST)
 	public String createBook(@ModelAttribute("book") Book book, Model model, BindingResult result) {
 		if (!result.hasErrors()) {
 			// save
@@ -58,7 +71,7 @@ public class BookController {
 		return "book";
 	}
 
-	@RequestMapping(value = "/book/delete/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/book/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public Book deleteBook(@PathVariable("id") Long id) {
 		Book book = bookService.getBook(id);

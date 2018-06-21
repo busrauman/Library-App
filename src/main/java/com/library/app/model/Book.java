@@ -58,7 +58,7 @@ public class Book {
 
 	@ManyToMany(targetEntity = Author.class, fetch = FetchType.LAZY)
 	@JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
-	private List<Publisher> authorList = new ArrayList<>();
+	private List<Author> authors = new ArrayList<>();
 
 	@Column(name = "deleted")
 	private Boolean deleted = false;
@@ -74,12 +74,13 @@ public class Book {
 
 	
 	
-	public List<Publisher> getAuthorList() {
-		return authorList;
+
+	public List<Author> getAuthors() {
+		return authors;
 	}
 
-	public void setAuthorList(List<Publisher> authorList) {
-		this.authorList = authorList;
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
 	}
 
 	public Calendar getCreatedDate() {
@@ -106,13 +107,6 @@ public class Book {
 		this.deleted = deleted;
 	}
 
-	public List<Publisher> getAuthor() {
-		return authorList;
-	}
-
-	public void setAuthor(List<Publisher> author) {
-		this.authorList = author;
-	}
 
 	public Publisher getPublisher() {
 		return publisher;

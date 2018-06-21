@@ -26,5 +26,8 @@ public class AuthorService {
 		// TODO Auto-generated method stub
 		return authorRepository.findByDeletedFalse();
 	}
+	public void deleteAuthor(Long id) {
+		authorRepository.deleteAuthor(id);
+	}
 
 }

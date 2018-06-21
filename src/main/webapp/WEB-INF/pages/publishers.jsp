@@ -43,7 +43,7 @@
 			<c:if test="${empty publishers }">
 				<div class="jumbotron jumbotron-fluid">
 					<div class="container">
-						<h4 class="display-4">Kayıt Bulunamadı</h4>
+						<h4 class="display-4"><fmt:message key="warning.kayit.bulunamadi"/></h4>
 					</div>
 				</div>
 			</c:if>

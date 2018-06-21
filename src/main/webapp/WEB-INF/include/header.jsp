@@ -10,6 +10,7 @@
 <%@include file="../include/javascriptIncludes.jsp" %>
 
 </head>
+<c:set var="appName" value="/library" ></c:set>
 	 <div id="navbar" class="navbar-inverse navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#"><fmt:message key="menu.anasayfa"/></a></li>
@@ -20,8 +21,8 @@
                     <fmt:message key="menu.kitap"/>
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="./create/book"><fmt:message key="menu.kitap.ekle"/></a></li>
-                        <li><a href="#"><fmt:message key="menu.kitap.listesi"/></a></li>
+                        <li><a href="${appName }/book"><fmt:message key="menu.kitap.ekle"/></a></li>
+                        <li><a href="${appName }/books"><fmt:message key="menu.kitap.listesi"/></a></li>
 <!--                         <li><a href="#">Something else here</a></li> -->
                         <li role="separator" class="divider"></li>
 <!--                         <li class="dropdown-header">Nav header</li> -->
@@ -35,8 +36,8 @@
                     <fmt:message key="menu.yazar"/>
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><fmt:message key="menu.yazar.ekle"/></a></li>
-                        <li><a href="#"><fmt:message key="menu.yazar.listesi"/></a></li>
+                        <li><a href="${appName }/author"><fmt:message key="menu.yazar.ekle"/></a></li>
+                        <li><a href="${appName }/authors"><fmt:message key="menu.yazar.listesi"/></a></li>
                     </ul>
                 </li>
                 
@@ -45,8 +46,8 @@
                     <fmt:message key="menu.yayinevi"/>
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="publisher"><fmt:message key="menu.yayinevi.ekle"/></a></li>
-                        <li><a href="publishers"><fmt:message key="menu.yayinevi.listesi"/></a></li>                
+                        <li><a href="${appName }/publisher"><fmt:message key="menu.yayinevi.ekle"/></a></li>
+                        <li><a href="${appName }/publishers"><fmt:message key="menu.yayinevi.listesi"/></a></li>                
                     </ul>
                 </li>
             </ul>

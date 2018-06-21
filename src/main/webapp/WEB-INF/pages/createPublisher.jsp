@@ -34,6 +34,7 @@ var validateForm = function() {
 <body>
 	<div class="wrapper">
 		<%@include file="../include/header.jsp"%>
+		
 		<div class="container content margin-top">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="./publisher" ><h2><strong><fmt:message key="title.yayinevi.form"/></strong></h2></a></li>

@@ -34,12 +34,12 @@ public class AuthorController {
 		return author;
 	}
 	
-	@RequestMapping(value="/create/author",method=RequestMethod.GET)
+	@RequestMapping(value="/author",method=RequestMethod.GET)
 	public String createAuthor() {
 		return "createAuthor";
 	}
 
-	@RequestMapping(value="/create/author",method=RequestMethod.POST)
+	@RequestMapping(value="/author",method=RequestMethod.POST)
 	public String createAuthor(@ModelAttribute("author") Author author, Model model, BindingResult result) {
 		if (!result.hasErrors()) {
 			//save
@@ -57,15 +57,15 @@ public class AuthorController {
 		return "author";
 	}
 	
-	@RequestMapping(value="/author/delete/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/author/{id}",method=RequestMethod.DELETE)
 	@ResponseBody
-	public Author getAuthor(@PathVariable("id") Long id) {
+	public Boolean getAuthor(@PathVariable("id") Long id) {
 		Author author = authorService.getAuthor(id);
 		if(null != author) {
 			author.setDeleted(true);
 			authorService.saveOrUpdate(author);
 		}
-		return author;
+		return true;
 	}
 	
 	@RequestMapping(value="/authors",method=RequestMethod.GET)

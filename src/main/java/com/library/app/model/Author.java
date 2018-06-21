@@ -11,6 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
@@ -33,6 +34,7 @@ public class Author {
 	@Column(name="lastname")
 	private String lastname;
 	
+	@Type(type="text")
 	@Column(name="description")
 	private String description;
 	
@@ -100,6 +102,13 @@ public class Author {
 
 	public Long getId() {
 		return id;
+	}
+	
+	public String getName() {
+		if(null != this.firstname && null != this.firstname ) {
+			return this.firstname +" " + this.lastname;
+		}
+		return "";
 	}
 	
 	

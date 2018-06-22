@@ -13,7 +13,6 @@
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="./authors" ><h2><strong><fmt:message key="menu.yazar.listesi"/></strong></h2></a></li>
 			</ol>
-			<div class="panel-body">
 				<div class="list-group">
 				<c:forEach items="${authors }" var="author">
 					<li href="./author/${author.id}"
@@ -47,7 +46,6 @@
 					</div>
 				</div>
 			</c:if>
-			</div>
 		</div>
 	</div>
 </body>

@@ -1,12 +1,20 @@
 package com.library.app.model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -15,7 +23,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
 	@Id
@@ -37,20 +45,41 @@ public class User {
 	private String password;
 
 	@Transient
-	private String passwordAgain;
-	
-	
+	private String passwordConfim;
+
 	@CreationTimestamp
-	@Column(name="created_date")
+	@Column(name = "created_date")
 	private Calendar createdDate;
-	
-	
+
 	@UpdateTimestamp
-	@Column(name="updated_date")
+	@Column(name = "updated_date")
 	private Calendar updatedDate;
+
+	@Column(name = "email")
+	private String email;
+
+	@ManyToOne(targetEntity = Role.class, fetch = FetchType.LAZY)
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Role role;
 	
 	
-	
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public String getPasswordConfim() {
+		return passwordConfim;
+	}
+
+	public void setPasswordConfim(String passwordConfim) {
+		this.passwordConfim = passwordConfim;
+	}
+
 	public Calendar getCreatedDate() {
 		return createdDate;
 	}
@@ -66,9 +95,6 @@ public class User {
 	public void setUpdatedDate(Calendar updatedDate) {
 		this.updatedDate = updatedDate;
 	}
-
-	@Column(name="email")
-	private String email;
 
 	public String getFirstname() {
 		return firstname;
@@ -102,14 +128,6 @@ public class User {
 		this.password = password;
 	}
 
-	public String getPasswordAgain() {
-		return passwordAgain;
-	}
-
-	public void setPasswordAgain(String passwordAgain) {
-		this.passwordAgain = passwordAgain;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -121,6 +139,5 @@ public class User {
 	public Long getId() {
 		return id;
 	}
-	
-	
+
 }

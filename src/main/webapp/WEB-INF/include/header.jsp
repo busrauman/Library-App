@@ -3,6 +3,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <%@page contentType="text/html; charset=UTF-8"%>
 <html >
 <head>
@@ -13,7 +15,7 @@
 <c:set var="appName" value="/library" ></c:set>
 	 <div id="navbar" class="navbar-inverse navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#"><fmt:message key="menu.anasayfa"/></a></li>
+                <li class="active"><a href="homepage"><fmt:message key="menu.anasayfa"/></a></li>
 <!--                 <li><a href="#about">About</a></li> -->
 <!--                 <li><a href="#contact">Contact</a></li> -->
                 <li class="dropdown">
@@ -36,7 +38,7 @@
                     <fmt:message key="menu.yazar"/>
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${appName }/author"><fmt:message key="menu.yazar.ekle"/></a></li>
+                      	  <li><a href="${appName }/author"><fmt:message key="menu.yazar.ekle"/></a></li>                      	
                         <li><a href="${appName }/authors"><fmt:message key="menu.yazar.listesi"/></a></li>
                     </ul>
                 </li>
@@ -50,6 +52,8 @@
                         <li><a href="${appName }/publishers"><fmt:message key="menu.yayinevi.listesi"/></a></li>                
                     </ul>
                 </li>
+               <li class="active pull-right"><a href="logout"><fmt:message key="menu.logout"/></a></li>
+                
             </ul>
 </div><!--/.nav-collapse -->
 

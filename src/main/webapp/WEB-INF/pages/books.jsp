@@ -26,12 +26,15 @@
 									pattern="dd/MM/yyyy" /></small>
 					</a>
 						<p class="mb-1"></p>
-						<small>${book.description }</small> <span class="pull-right">
+						 <sec:authorize access="hasRole('ROLE_ADMIN')">
+						
+							<small>${book.description }</small> <span class="pull-right">
 							<button type="button" class="btn btn-xs btn-danger"
 								onclick="deleteBook('${book.id}')"
 								title="<fmt:message key='label.sil'/>">
 								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 							</button>
+						  </sec:authorize>
 							<a type="button" href="book?id=${book.id }" class="btn btn-xs btn-warning" 
 								title="<fmt:message key='label.duzenle'/>">
 								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

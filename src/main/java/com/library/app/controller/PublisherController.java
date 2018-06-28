@@ -3,6 +3,7 @@ package com.library.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -54,13 +55,14 @@ public class PublisherController {
 		model.addAttribute("publishers",publishers);
 		return "publishers";
 	}
-	
 	@RequestMapping(value="/publisher/{id}",method=RequestMethod.GET)
 	public String publisher(@PathVariable("id") Long id,Model model) {
 		Publisher publisher = publisherService.getPublisher(id);
 		model.addAttribute("publisher",publisher);
 		return "publisher";
 	}
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value="/publisher/{id}",method=RequestMethod.DELETE)
 	@ResponseBody
 	public Boolean deletePublisher(@PathVariable("id") Long id) {

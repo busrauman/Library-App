@@ -40,7 +40,7 @@ var validateForm = function() {
 		
 		<div class="container content margin-top">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="./author" ><h2><strong><fmt:message key="title.yazar.detay"/></strong></h2></a></li>
+				<li class="breadcrumb-item"><a href="${author.id }" ><h2><strong><fmt:message key="title.yazar.detay"/></strong></h2></a></li>
 			</ol>
 			<div class="panel-body">
 				<c:choose>
@@ -57,8 +57,7 @@ var validateForm = function() {
 											<td>${author.name }</td>
 										</tr>
 										<tr>
-											<td class="text-success"><i class="fa fa-list-ol"></i> <fmt:message
-													key="label.aciklama" /></td>
+											<td class="text-success"><i class="fa fa-list-ol"></i> <fmt:message key="label.aciklama" /></td>
 											<td>${author.description}</td>
 										</tr>
 									</tbody>

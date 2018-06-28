@@ -71,8 +71,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers("/login").permitAll().antMatchers("/resources/**")
-				.permitAll().antMatchers("/hello/**").permitAll().anyRequest().authenticated().and().formLogin()
+		http.csrf().disable().authorizeRequests().antMatchers("/login","/resources/**").permitAll().antMatchers("/js/**")
+				.permitAll().antMatchers("**/webjars/**").permitAll().antMatchers("/css/**").permitAll().anyRequest().authenticated().and().formLogin()
 				.loginPage("/login").failureUrl("/login?error").defaultSuccessUrl("/loginOk")
 				.loginProcessingUrl("/j_spring_security_check").usernameParameter("username")
 				.passwordParameter("password");

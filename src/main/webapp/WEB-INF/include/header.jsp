@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<%@page contentType="text/html; charset=UTF-8"%>
+
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@page contentType="text/html; charset=UTF-8"%>
 <html >
 <head>
 <%@include file="../include/cssIncludes.jsp" %>
@@ -18,7 +19,7 @@
 
 </head>
 <c:set var="appName" value="/library" ></c:set>
-	 <div id="navbar" class="navbar-inverse navbar-collapse collapse">
+	 <div id="navbar" class="navbar-inverse navbar-collapse collapse ">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="homepage"><fmt:message key="menu.anasayfa"/></a></li>
 <!--                 <li><a href="#about">About</a></li> -->
@@ -57,9 +58,14 @@
                         <li><a href="${appName }/publishers"><fmt:message key="menu.yayinevi.listesi"/></a></li>                
                     </ul>
                 </li>
-               <li class="active pull-right"><a href="logout"><fmt:message key="menu.logout"/></a></li>
-                
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                	                <li ><a href="users"><fmt:message key="menu.users"/></a></li>
+                	
+                </sec:authorize>
             </ul>
+             
+           	<li class="pull-right"><i class="color-white"><strong><sec:authentication property="principal.user.firstname"/>&nbsp;<sec:authentication property="principal.user.lastname"/></strong></i><i class="btn btn-light" ><a href="logout" class="color-white"><fmt:message key="menu.logout"/></a></i></li>
+            
 </div><!--/.nav-collapse -->
 
 </html>

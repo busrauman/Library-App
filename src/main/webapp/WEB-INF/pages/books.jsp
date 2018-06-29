@@ -25,10 +25,9 @@
 									value="${book.createdDate.time}" type="both"
 									pattern="dd/MM/yyyy" /></small>
 					</a>
-						<p class="mb-1"></p>
+						<p class="mb-1"><small>${book.description }</small> <span class="pull-right">
+						</p>
 						 <sec:authorize access="hasRole('ROLE_ADMIN')">
-						
-							<small>${book.description }</small> <span class="pull-right">
 							<button type="button" class="btn btn-xs btn-danger"
 								onclick="deleteBook('${book.id}')"
 								title="<fmt:message key='label.sil'/>">

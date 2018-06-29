@@ -25,6 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 
     @Autowired
     private PasswordEncoder bCryptPasswordEncoder;
+    
 	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String email)throws UsernameNotFoundException {
 		User user = userRepository.findByEmail(email);

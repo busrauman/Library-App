@@ -8,7 +8,7 @@
 	<div class="wrapper">
 		<div class="container content margin-top">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="./publishers"><h2>
+				<li class="breadcrumb-item"><a href="${book.id }"><h2>
 							<strong><fmt:message key="title.yayinevi.detay" /></strong>
 						</h2></a></li>
 			</ol>

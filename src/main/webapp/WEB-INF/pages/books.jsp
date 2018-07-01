@@ -84,7 +84,6 @@
 						    });
 						},
 						error : function(err) {
-							alert("err");
 							swal({
 						    	position: 'top-right',
 						    	text:'<fmt:message key="label.silme.hata"/>',

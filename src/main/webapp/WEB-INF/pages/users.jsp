@@ -52,6 +52,62 @@
 
 <script>
 	function changeRoleToAdmin(id){
+		swal({
+			  title: '<fmt:message key="label.user.rol"/>',
+			  text: '<fmt:message key="label.user.rol.onay"/>',
+			  type: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#d33',
+			  cancelButtonColor:'#2ecc71' ,
+			  cancelButtonText: '<fmt:message key="label.vazgec"/>',
+			  confirmButtonText : '<fmt:message key="label.evet"/>',
+			  confirmButtonClass: 'btn btn-danger',
+			  cancelButtonClass: 'btn btn-success'
+			}).then((result)=>{
+			  if (result.value) {
+				  $.ajax({
+						url:"changeRoleToAdmin/"+id,
+						method:"PUT",
+						async:false,
+						success:function(data){
+							if(data){
+								$("#item_"+id).remove();
+								swal({
+							    	position: 'top-right',
+							    	text:'<fmt:message key="label.user.rol.basarili"/>',
+								    type:'info',
+							     	toast:true,
+							     	timer:1500,
+							     	showConfirmButton:false
+							    });
+								
+							}else{
+								swal({
+							    	position: 'top-right',
+							    	text:'<fmt:message key="label.user.rol.basarisiz"/>',
+								    type:'danger',
+							     	toast:true,
+							     	timer:1500,
+							     	showConfirmButton:false
+							    });
+							}
+						},
+						error:function(err){
+							swal({
+						    	position: 'top-right',
+						    	text:'<fmt:message key="label.user.rol.hata"/>',
+							    type:'danger',
+						     	toast:true,
+						     	timer:1500,
+						     	showConfirmButton:false
+						    });
+						}
+					});
+			  }
+			})
+		
+		
+		
 		
 	}
 </script>

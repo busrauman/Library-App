@@ -25,6 +25,10 @@ public class UserService {
 		userRepository.saveAndFlush(user);
 	}
 	
+	public User getOne(Long id) {
+		return userRepository.getOne(id);
+	}
+	
 	public List<User> findUserRole() {
 //		return userRepository.findAll();
 		Role role = roleRepository.getOne(2L);

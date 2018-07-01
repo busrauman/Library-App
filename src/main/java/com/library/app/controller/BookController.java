@@ -90,4 +90,11 @@ public class BookController {
 		model.addAttribute("books", books);
 		return "books";
 	}
+	
+	@RequestMapping(value="/book/search",method=RequestMethod.GET)
+	public String getAuthor(@RequestParam("search") String search, Model model) {
+		List<Book> books = bookService.search(search);
+		model.addAttribute("books", books);
+		return "homepage";
+	}
 }

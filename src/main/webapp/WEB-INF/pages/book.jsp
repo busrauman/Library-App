@@ -9,7 +9,7 @@
 		<div class="container content margin-top">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="${book.id }"><h2>
-							<strong><fmt:message key="title.yayinevi.detay" /></strong>
+							<strong><fmt:message key="title.kitap.detay" /></strong>
 						</h2></a></li>
 			</ol>
 			<div class="panel-body">
@@ -22,13 +22,42 @@
 									<tbody>
 										<tr>
 											<td class="text-success"><i class="fa fa-user"></i> <fmt:message
-													key="label.yayinevi.adi" /></td>
-											<td>${book.name }</td>
+													key="label.kitap.isbn" /></td>
+											<td>${book.isbnNo }</td>
+										</tr>
+										<c:if test="${! empty book.subName or book.subName != ' ' }">
+										<tr>
+											<td class="text-success"><i class="fa fa-user"></i> <fmt:message
+													key="label.kitap.subname" /></td>
+											<td>${book.subName }</td>
+										</tr>
+										</c:if>
+										<c:if test="${! empty book.seriesName or book.seriesName != ' ' }">
+										<tr>
+											<td class="text-success"><i class="fa fa-user"></i> <fmt:message
+													key="label.kitap.seriesname" /></td>
+											<td>${book.seriesName }</td>
+										</tr>
+									   </c:if>
+										
+										<tr>
+											<td class="text-success"><i class="fa fa-user"></i> <fmt:message
+													key="label.kitap.yayinevi" /></td>
+											<td>${book.publisher.name }</td>
 										</tr>
 										<tr>
 											<td class="text-success"><i class="fa fa-list-ol"></i> <fmt:message
-													key="label.yayinevi.aciklama" /></td>
+													key="label.aciklama" /></td>
 											<td>${book.description }</td>
+										</tr>
+										
+										<tr>
+											<td class="text-success"><i class="fa fa-list-ol"></i> <fmt:message
+													key="label.kitap.yazar" /></td>
+											<td>
+											<c:forEach items="${book.authors}" var="author">
+												<p>${author.name }</p>
+											</c:forEach></td>
 										</tr>
 									</tbody>
 								</table>

@@ -10,7 +10,7 @@
 		<div class="container content margin-top">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="./books"><h2>
-							<strong><fmt:message key="title.yayinevi.listesi" /></strong>
+							<strong><fmt:message key="title.kitap.listesi" /></strong>
 						</h2></a></li>
 			</ol>
 
@@ -25,16 +25,18 @@
 									value="${book.createdDate.time}" type="both"
 									pattern="dd/MM/yyyy" /></small>
 					</a>
-						<p class="mb-1"><small>${book.description }</small> <span class="pull-right">
-						</p>
+						<p class="mb-1"></p>
+						<small>${book.description }</small>
+						 <span class="pull-right">
+						
 						 <sec:authorize access="hasRole('ROLE_ADMIN')">
-							<button type="button" class="btn btn-xs btn-danger"
+							<button type="button" class="btn btn-xs btn-danger "
 								onclick="deleteBook('${book.id}')"
 								title="<fmt:message key='label.sil'/>">
 								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 							</button>
 						  </sec:authorize>
-							<a type="button" href="book?id=${book.id }" class="btn btn-xs btn-warning" 
+							<a type="button" href="book?id=${book.id }" class="btn btn-xs btn-warning " 
 								title="<fmt:message key='label.duzenle'/>">
 								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 							</a>

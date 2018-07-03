@@ -107,13 +107,58 @@ body {
 	}
 }
 </style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	validateForm.initValidateForm();
+});
+
+var validateForm = function() {
+	return {
+		initValidateForm : function() {
+			// Validation
+			$('#register').validate({
+				// Rules for form validation
+				rules : {
+					firstname : {
+						required : true
+					},
+					lastname : {
+						required : true					
+					},
+					password : {
+						required : true					
+					},
+					passwordConfim : {
+						required : true	,
+			            equalTo: "#password"
+					},
+					username : {
+						required : true					
+					},
+					email : {
+						required : true,
+						email:true
+					},
+					
+					
+				},
+				// Do not change code below
+				errorPlacement : function(error, element) {
+					error.insertAfter(element.after());
+				}
+			});
+		}
+	};
+}();
+</script>
 </head>
 <body>
 	<div class="container">
 		<h4 class="well"><fmt:message key="form.register"/></h4>
 		<div class="col-lg-12 well">
 			<div class="row">
-				<form:form modelAttribute="user" action="register" method="post">
+				<form:form modelAttribute="user" action="register" method="post" id="register">
 					<div class="col-sm-12">
 						<div class="row">
 							<div class="col-sm-6 form-group">

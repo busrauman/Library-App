@@ -76,7 +76,7 @@ body {
 	<div class="container">
 		<form class="form-signin" action="./j_spring_security_check"
 			method="post">
-			<h2 class="form-signin-heading">Please sign in</h2>
+			<h2 class="form-signin-heading">Giriş Yapınız</h2>
 			<label for="inputEmail" class="sr-only">Email address</label> <input
 				type="email" id="inputEmail" class="form-control"
 				placeholder="Email address" name="username" required> <label

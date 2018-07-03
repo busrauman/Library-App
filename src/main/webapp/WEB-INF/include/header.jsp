@@ -64,7 +64,7 @@
                 </sec:authorize>
             </ul>
              
-           	<li class="pull-right"><i class="color-white"><strong><sec:authentication property="principal.user.firstname"/>&nbsp;<sec:authentication property="principal.user.lastname"/></strong></i><i class="btn btn-light" ><a href="logout" class="color-white"><fmt:message key="menu.logout"/></a></i></li>
+           	<li class="pull-right"><i class="color-white"><strong><sec:authentication property="principal.user.firstname"/>&nbsp;<sec:authentication property="principal.user.lastname"/></strong></i><i class="btn btn-light" ><a href="${appName }/logout" class="color-white"><fmt:message key="menu.logout"/></a></i></li>
             
 </div><!--/.nav-collapse -->
 

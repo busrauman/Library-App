@@ -23,6 +23,7 @@ public class UserController {
 	@Autowired
 	private RoleService roleService;
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value="users",method=RequestMethod.GET)
 	public String users(Model model ){
 		List<User> users = userService.findUserRole();

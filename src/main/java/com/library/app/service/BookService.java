@@ -42,6 +42,8 @@ public class BookService {
 		Criteria criteria = em.unwrap(Session.class).createCriteria(Book.class);
 		criteria.add(Restrictions.or(Restrictions.like("name", 	search,MatchMode.ANYWHERE).ignoreCase(),
 				Restrictions.like("isbnNo", search,MatchMode.ANYWHERE).ignoreCase()));
+		criteria.add(Restrictions.eq("deleted", false));
+
 		return criteria.list();
 	}
 	

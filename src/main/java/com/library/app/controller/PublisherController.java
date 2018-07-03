@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.library.app.customeditor.CustomInputEditor;
+import com.library.app.model.Author;
 import com.library.app.model.Publisher;
 import com.library.app.service.PublisherService;
 
@@ -80,5 +81,14 @@ public class PublisherController {
 			return true;
 		}
 		return false;
+	}
+	
+	@RequestMapping(value="/publisher/search",method=RequestMethod.GET)
+	public String getAuthor(@RequestParam("search") String search, Model model) {
+		if(null != search && !search.equals("")) {
+			List<Publisher> publishers = publisherService.search(search);
+			model.addAttribute("publishers", publishers);
+		}
+		return "publishers";
 	}
 }

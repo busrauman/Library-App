@@ -42,7 +42,7 @@ public class AuthorService {
 	public List<Author> search(String search) {
 		Criteria criteria = em.unwrap(Session.class).createCriteria(Author.class);
 		criteria.add(Restrictions.or(Restrictions.like("firstname", search,MatchMode.ANYWHERE).ignoreCase(),Restrictions.like("lastname", search,MatchMode.ANYWHERE).ignoreCase()));
-//		criteria.add(Restrictions.eq("deleted", false));
+		criteria.add(Restrictions.eq("deleted", false));
 		return criteria.list();
 	}
 

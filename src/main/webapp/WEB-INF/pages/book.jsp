@@ -20,7 +20,6 @@
 							<div class="table-responsive panel">
 								<table class="table">
 									<tbody>
-
 										<tr>
 											<td class="text-success"><i class="fa fa-user"></i> <fmt:message
 													key="label.yayinevi.adi" /></td>

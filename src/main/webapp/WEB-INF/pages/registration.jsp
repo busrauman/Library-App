@@ -152,8 +152,11 @@ body {
 							</div>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-lg btn-info pull-right"><fmt:message key="button.submit"/></button>
+					<button type="submit" class="btn btn-lg btn-info btn-block"><fmt:message key="button.submit"/></button>
+					
 			</div>
+			<a href="login" class="pull-right""><fmt:message
+					key="button.login" /></a>
 			</form:form>
 		</div>
 	</div>

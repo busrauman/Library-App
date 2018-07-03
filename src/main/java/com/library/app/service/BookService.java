@@ -1,5 +1,6 @@
 package com.library.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -12,6 +13,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.library.app.model.Author;
 import com.library.app.model.Book;
 import com.library.app.repository.BookRepository;
 
@@ -41,6 +43,12 @@ public class BookService {
 		criteria.add(Restrictions.or(Restrictions.like("name", 	search,MatchMode.ANYWHERE).ignoreCase(),
 				Restrictions.like("isbnNo", search,MatchMode.ANYWHERE).ignoreCase()));
 		return criteria.list();
+	}
+	
+	public List<Book> listBooksByAuthor(Author author){
+		List<Author> authors = new ArrayList<>();
+		authors.add(author);
+		return bookRepository.findByAuthors(authors);
 	}
 
 }

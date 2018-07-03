@@ -18,13 +18,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.library.app.customeditor.CustomInputEditor;
 import com.library.app.model.Author;
+import com.library.app.model.Book;
 import com.library.app.service.AuthorService;
+import com.library.app.service.BookService;
 
 @Controller
 public class AuthorController {
 
 	@Autowired
 	private AuthorService authorService;
+	
+	@Autowired
+	private BookService bookService;
+	
 	
 	@InitBinder
 	public void binder(WebDataBinder binder) {
@@ -61,6 +67,8 @@ public class AuthorController {
 	public String getAuthor(@PathVariable("id") Long id, Model model) {
 		Author author = authorService.getAuthor(id);
 		if(null != author) {
+			List<Book> books = bookService.listBooksByAuthor(author);
+			model.addAttribute("books",books);
 			model.addAttribute("author",author);
 		}
 		return "author";

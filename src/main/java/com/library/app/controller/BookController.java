@@ -102,8 +102,10 @@ public class BookController {
 	
 	@RequestMapping(value="/book/search",method=RequestMethod.GET)
 	public String getAuthor(@RequestParam("search") String search, Model model) {
-		List<Book> books = bookService.search(search);
-		model.addAttribute("books", books);
+		if(null != search && !search.equals("")) {
+			List<Book> books = bookService.search(search);
+			model.addAttribute("books", books);
+		}
 		return "homepage";
 	}
 }

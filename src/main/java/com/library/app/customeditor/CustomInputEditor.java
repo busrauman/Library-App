@@ -1,6 +1,8 @@
 package com.library.app.customeditor;
 
 import java.beans.PropertyEditorSupport;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 import org.springframework.web.util.HtmlUtils;
 
@@ -12,7 +14,7 @@ public class CustomInputEditor extends PropertyEditorSupport {
 				this.setValue(null);
 			}else {
 				try{
-					this.setValue(HtmlUtils.htmlEscape(x));
+					this.setValue(HtmlUtils.htmlEscape(x, "UTF-8"));
 				}catch(Exception e){
 					this.setValue(null);
 				}

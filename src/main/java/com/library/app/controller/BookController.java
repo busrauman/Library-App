@@ -101,7 +101,7 @@ public class BookController {
 	}
 	
 	@RequestMapping(value="/book/search",method=RequestMethod.GET)
-	public String getAuthor(@RequestParam("search") String search, Model model) {
+	public String getBooks(@RequestParam("search") String search, Model model) {
 		if(null != search && !search.equals("")) {
 			List<Book> books = bookService.search(search);
 			model.addAttribute("books", books);

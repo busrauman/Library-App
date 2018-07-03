@@ -10,7 +10,10 @@
 		<div class="container content margin-top">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item">
-					<form action="/library/book/search" method="GET"> 
+				</li>
+			</ol>
+			<div class="panel-body">
+				<form action="/library/book/search" method="GET"> 
 					  <div class="">
 					    <div class="col-md-12">
 					      <div class="input-group">
@@ -24,8 +27,7 @@
 					    </div>
 					  </div>
 					</form>
-				</li>
-			</ol>
+			</div>
 			<div class="list-group">
 				<c:forEach items="${books }" var="book">
 					<li href="${book.id}"

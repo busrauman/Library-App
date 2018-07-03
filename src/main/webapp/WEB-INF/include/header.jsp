@@ -59,7 +59,7 @@
                     </ul>
                 </li>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                	                <li ><a href="users"><fmt:message key="menu.users"/></a></li>
+                	                <li ><a href="${appName }/users"><fmt:message key="menu.users"/></a></li>
                 	
                 </sec:authorize>
             </ul>

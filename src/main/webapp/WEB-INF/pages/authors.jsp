@@ -13,6 +13,22 @@
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="./authors" ><h2><strong><fmt:message key="menu.yazar.listesi"/></strong></h2></a></li>
 			</ol>
+			<div class="panel-body">
+			<form action="/library/author/search" method="GET"> 
+					  <div class="">
+					    <div class="">
+					      <div class="input-group">
+					        <input type="text" class="form-control" placeholder="Yazar Adı, Soyadı ile arama yapabilirsiniz "  name="search"/>
+					     <div class="input-group-btn">
+					          <button class="btn btn-primary" type="submit">
+					            <span class="glyphicon glyphicon-search"></span>
+					          </button>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					</form>
+				</div>
 				<div class="list-group">
 				<c:forEach items="${authors }" var="author">
 					<li href="./author/${author.id}"

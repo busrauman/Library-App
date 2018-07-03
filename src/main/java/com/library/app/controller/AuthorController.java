@@ -93,4 +93,12 @@ public class AuthorController {
 		return "authors";
 	}
 	
+	@RequestMapping(value="/author/search",method=RequestMethod.GET)
+	public String getAuthor(@RequestParam("search") String search, Model model) {
+		if(null != search && !search.equals("")) {
+			List<Author> authors = authorService.search(search);
+			model.addAttribute("authors", authors);
+		}
+		return "authors";
+	}
 }

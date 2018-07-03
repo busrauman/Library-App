@@ -60,6 +60,10 @@ var validateForm = function() {
 											<td class="text-success"><i class="fa fa-list-ol"></i> <fmt:message key="label.aciklama" /></td>
 											<td>${author.description}</td>
 										</tr>
+										<tr>
+											<td class="text-success"><i class="fa fa-list-ol"></i> <fmt:message key="label.aciklama" /></td>
+											<td>${author.description}</td>
+										</tr>
 									</tbody>
 								</table>
 							</div>

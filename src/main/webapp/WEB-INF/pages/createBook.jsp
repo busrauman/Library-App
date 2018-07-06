@@ -108,6 +108,14 @@ var validateForm = function() {
 							class="form-control" />
 					</div>
 				</div>
+				<c:if test="${! empty book.id }">
+									<script type="text/javascript">
+										<c:forEach items="${book.authors}" var="author">
+								              $('#authors option[value="${author.id}"]').attr('selected','selected');
+										</c:forEach>
+										$('#publisher option[value="${book.publisher.id}"]').attr('selected', 'selected');
+									</script>
+								</c:if>
 				<button type="submit" class="btn btn-success pull-right"><fmt:message key="button.submit"/></button>
 			</form:form>
 		</div>

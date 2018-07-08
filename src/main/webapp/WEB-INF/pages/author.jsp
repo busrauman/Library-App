@@ -80,9 +80,8 @@
 										<div id="collapseOne" class="panel-collapse collapse">
 											<ul class="list-group">
 												<c:forEach items="${books}" var="book">
-													<li class="list-group-item"><span
-														class="glyphicon glyphicon-flash text-success"></span>
-													<p>${book.name }</p></li>
+													<li class="list-group-item">
+													<a href="/library/book/${book.id }">${book.name }</a></li>
 												</c:forEach>
 											</ul>
 										</div>

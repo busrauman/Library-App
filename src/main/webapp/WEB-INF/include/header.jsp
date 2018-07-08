@@ -21,7 +21,7 @@
 <c:set var="appName" value="/library" ></c:set>
 	 <div id="navbar" class="navbar-inverse navbar-collapse collapse ">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="homepage"><fmt:message key="menu.anasayfa"/></a></li>
+                <li class="active"><a href="#"><fmt:message key="menu.anasayfa"/></a></li>
 <!--                 <li><a href="#about">About</a></li> -->
 <!--                 <li><a href="#contact">Contact</a></li> -->
                 <li class="dropdown">

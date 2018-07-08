@@ -26,7 +26,8 @@ public class UserController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value="users",method=RequestMethod.GET)
 	public String users(Model model ){
-		List<User> users = userService.findUserRole();
+		Role role = roleService.listRoles().get(1);
+		List<User> users = userService.findUserRole(role);
 		model.addAttribute("users",users);
 		return "users";
 	}
@@ -38,7 +39,7 @@ public class UserController {
 	public Boolean changeRoleToAdmin(@PathVariable Long id ){
 		User user = userService.getOne(id);
 		if( null != id) {
-			Role role = roleService.getRole(1L);
+			Role role = roleService.listRoles().get(0);
 			if(null != role) {
 				user.setRole(role);
 				userService.saveUser(user);

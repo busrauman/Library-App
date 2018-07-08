@@ -29,9 +29,8 @@ public class UserService {
 		return userRepository.getOne(id);
 	}
 	
-	public List<User> findUserRole() {
+	public List<User> findUserRole(Role role) {
 //		return userRepository.findAll();
-		Role role = roleRepository.getOne(2L);
 		return userRepository.findByRole(role);
 		
 	}

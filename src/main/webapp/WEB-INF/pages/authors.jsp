@@ -49,7 +49,7 @@
 								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 							</button>
 						 </sec:authorize>
-							<a type="button" href="author?id=${author.id }" class="btn btn-xs btn-warning" 
+							<a type="button" href="/library/author?id=${author.id }" class="btn btn-xs btn-warning" 
 								title="<fmt:message key='label.duzenle'/>">
 								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 							</a>

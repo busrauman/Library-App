@@ -43,7 +43,7 @@ public class LoginController {
 		CustomUser customUser =  (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
 		if(null != customUser ) {
-			return "redirect:homepage";
+			return "redirect:books";
 		}
 		return "redirect:login.htm";
 	}

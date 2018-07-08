@@ -4,11 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
+import com.library.app.customeditor.CustomInputEditor;
 import com.library.app.model.Role;
 import com.library.app.model.User;
 import com.library.app.service.CustomUserDetailsService;
@@ -25,6 +28,12 @@ public class RegisterController {
 	private RoleService roleService;
 	@Autowired
 	private CustomUserDetailsService userDetailsService;
+	
+	
+	@InitBinder
+	public void binder(WebDataBinder binder) {
+		binder.registerCustomEditor(String.class, new CustomInputEditor());
+	}
 	
 	@ModelAttribute("user")
 	public User prepare() {

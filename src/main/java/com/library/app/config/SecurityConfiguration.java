@@ -38,7 +38,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	//
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
-		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		return new BCryptPasswordEncoder();
 	}
 
@@ -68,7 +67,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers("/login","/resources/**","/register").permitAll().antMatchers("/js/**")
+		http.csrf().disable().authorizeRequests().antMatchers("/login","/resources/**","/register","/init").permitAll().antMatchers("/js/**")
 				.permitAll().antMatchers("/webjars/**").permitAll().antMatchers("/css/**").permitAll().anyRequest().authenticated().and().formLogin()
 				.loginPage("/login").failureUrl("/login?error").defaultSuccessUrl("/loginOk")
 				.loginProcessingUrl("/j_spring_security_check").usernameParameter("username")

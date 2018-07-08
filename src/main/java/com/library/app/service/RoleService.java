@@ -1,5 +1,7 @@
 package com.library.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,15 @@ public class RoleService {
 	
 	public Role getRole(Long id) {
 		return roleRepository.getOne(id);
+	}
+	
+	public List<Role> listRoles(){
+		return roleRepository.findAll();
+		
+	}
+
+	public void save(Role role) {
+		// TODO Auto-generated method stub
+		roleRepository.saveAndFlush(role);
 	}
 }

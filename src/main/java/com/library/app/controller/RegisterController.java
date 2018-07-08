@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 
 import com.library.app.model.Role;
 import com.library.app.model.User;
@@ -24,6 +25,7 @@ public class RegisterController {
 	private RoleService roleService;
 	@Autowired
 	private CustomUserDetailsService userDetailsService;
+	
 	@ModelAttribute("user")
 	public User prepare() {
 		return new User();
@@ -31,13 +33,14 @@ public class RegisterController {
 	
 	@RequestMapping(value="register",method=RequestMethod.GET)
 	public String register(Model model) {
+		
 		return "registration";
 	}
 
 	@RequestMapping(value="register",method=RequestMethod.POST)
 	public String registerPost(@ModelAttribute("user") User user ,BindingResult result) {
 		if(!result.hasErrors()) {
-			Role role = roleService.getRole(2L);
+			Role role = roleService.listRoles().get(1);
 			user.setRole(role);
 			userDetailsService.saveUser(user);
 		}
